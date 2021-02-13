@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<bean id="dataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		
+		<!-- 객체를 생성하고, 생성자 매개변수 or setter 메서드를 이용하여 객체의 초기값을 지정할 수 있다 -->
+		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:32118:xe"/>
+		<property name="user" value="c##itbank"/>
+		<property name="password" value="it"/>
+		<property name="maxPoolSize" value="100"/>
+		<property name="maxIdleTime" value="600"/>
+		<property name="idleConnectionTestPeriod" value="300"/>
+	</bean>
+	
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<context:component-scan base-package="com.itbank.service"/>
+	<context:component-scan base-package="com.itbank.member"/>
+		
+</beans>
