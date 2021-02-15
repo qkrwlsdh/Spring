@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<!-- 패키지.DAO인터페이스 -->		
+<mapper namespace="com.itbank.model.TestDAO">
+	<!-- 
+		test라는 id(고유식별값)에 의해 다음 쿼리문을 실행하고 
+		결과를 String(단일 혹은 리스트)으로 반환
+	-->
+	<!-- id가 메서드 -->
+	<select id="selectTest" resultType="string">
+		select * from v$version
+	</select>
+	
+</mapper>
