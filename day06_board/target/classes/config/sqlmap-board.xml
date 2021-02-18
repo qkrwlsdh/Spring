@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.itbank.board.BoardDAO">
+	<select id="selectCount" resultType="int" parameterType="hashmap">
+		select count(*) from
+			(select board2.*, member2.userid, member2.username
+				from board2, member2
+				where board2.writer = member2.idx
+					and board2.deleted = 0
+					
+					<if test="type != null">
+						<if test="type == 'idx'">
+							and board2.idx = #{word}
+						</if>
+						<if test="type != 'idx'">
+							and ${type} like '%${word}%'
+						</if>
+					</if>
+					
+				order by board2.idx desc)
+	</select>
+
+	<select id="selectList" parameterType="hashmap" resultType="board">
+			select * from
+				(select rownum as st, A.* from
+					(select board2.*, member2.userid, member2.username from board2, member2
+						where board2.writer = member2.idx
+							and board2.deleted = 0
+							
+					<if test="type != null">
+						<if test="type == 'idx'">
+							and board2.idx = #{word}
+						</if>
+						<if test="type != 'idx'">
+							and ${type} like '%${word}%'
+						</if>
+					</if>
+			<!-- 
+				값으로 취급하려면 #{ }
+				글자자체로 처리하려면 ${ }
+			 -->
+			<![CDATA[
+						order by board2.idx desc)
+					A where rownum <= #{last})
+				where st >= #{first}
+			]]>
+	</select>
+
+	<select id="selectOne" resultType="board" parameterType="int">
+		select board2.*, member2.userid, member2.username
+		from board2, member2
+		where board2.writer = member2.idx
+		 and board2.deleted = 0
+		 and board2.idx = #{idx}
+	</select>
+	
+	<insert id="insertBoard" parameterType="board">
+		insert into board2 (title, writer, context, ipaddr, uploadfile)
+			values (#{title}, #{writer}, #{context}, #{ipaddr}, #{uploadfile})
+	</insert>
+	
+	<select id="selectMaxIdx" resultType="int">
+		select max(idx) from board2
+	</select>
+</mapper>

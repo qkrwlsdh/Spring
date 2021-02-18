@@ -1,0 +1,260 @@
+@charset "utf-8";
+div, span, body, header, nav, main, section, article, footer, ul, li, ol {
+	margin: 0;
+	padding: 0;	
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+a:hover {
+	text-decoration: underline;
+}
+body {
+	width: 100%;
+	overflow-x: hidden; 
+}
+footer {
+	padding: 20px;
+	display: flex;
+	width: 100%;
+	height: 180px;
+	justify-content: center;
+	align-items: flex-end;
+	position: relative;
+	bottom: 0;
+	font-size: 9pt;
+	font-weight: bold;	
+}
+header {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100px;
+	background-color: black;
+}
+header > h1 > a {
+	text-decoration: none;
+	color: white;
+}
+header > .loginInfo {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	color: white;
+}
+nav {
+	position: fixed;
+	top: 100px;
+	width: 100%;
+	height: 50px;
+	border: 2px solid black;
+	display: flex;
+	justify-content: center;
+}
+nav > ul {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+}
+nav > ul > li {
+	display: flex;
+	width: 200px;
+	height: 50px;
+	justify-content: center;
+	align-items: center;
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+main {
+	padding-top: 200px;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	height: 500px;
+}
+#boardList{
+	border-collapse: collapse; 
+	margin: auto;
+	width: 1200px;
+	min-width: 800px;
+}
+#boardList tr {
+	border-bottom: 1px solid #dadada;
+	height: 45px;
+}
+#boardList tr:hover {
+	cursor: default;
+}
+#boardList thead > tr {
+	background-color: #5a5a5a;	
+	color: white;
+	font-weight: bold;
+}
+#boardList tbody td {
+	text-align: center;
+}
+#boardList tbody > tr:hover {
+	background-color: #dadada;
+}
+#boardList tbody .idx {
+	width: 5%;
+}
+#boardList tbody .title {
+	width: 60%;
+	text-align: left;
+	padding-left: 20px;
+	font-weight: bold;
+}
+#boardList tbody .title > a {
+	text-decoration: none;
+	color: inherit;
+	font-weight: bold;
+	display: block;
+}
+#boardList tbody .title > a:hover {
+	cursor: pointer;
+}
+#boardList tbody .writer {
+	width: 10%;
+}
+#boardList tbody .viewCount {
+	width: 5%;
+}
+#boardList tbody .creationDate {
+	width: 10%;
+}
+#boardList tbody .ipaddr {
+	width: 10%;
+}
+#boardList tbody .current {
+	background-color: #eaeaea;
+}
+.wrap {
+	margin: 20px auto;
+	width: 1200px;
+	display: flex;
+	justify-content: space-between;	
+}
+.login {
+	width: 300px;
+}
+.login p {
+	margin: 20px;
+	
+}
+.viewBoard {
+	width: 1200px;
+	display: flex;
+	justify-content: center;
+	flex-flow: column;
+}
+.viewBoard input[type="text"],
+
+.viewBoard textarea {
+	all: unset;
+	border: 0;
+	padding: 5px;
+	border-bottom: 2px solid black;
+	width: 300px;
+}
+
+.paging > a{
+	text-decoration: none;
+	color: inherit;
+}
+.boardTitle{
+	margin-bottom: 20px;
+	font-weight: bold;
+	font-size: 12pt;
+}
+.boardContext {
+	margin-top: 20px;
+	border: 1px solid #dadada;
+	padding: 20px;
+	width: 1160px;
+	min-height: 500px;
+}
+.boardContext > textarea {
+	padding: 10px;
+	resize: none;
+	width: 100%;
+	height: 480px;
+	border: none;
+}
+.wrap form {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 400px;
+}
+select, input[type="text"], input[type="password"] {
+	height: 30px;
+	border: 1px solid black;
+}
+input[type="text"]{
+	height: 26px;
+	padding-left: 5px;
+}
+input[type="button"],
+input[type="submit"],
+button,
+.btn {
+	width: 90px;
+	height: 30px;
+	background-color: #dadada;
+	color: black;
+	font-weight: bold;
+	cursor: pointer;
+	border: none;
+	transition-duration: 0.5s;
+}
+input[type="button"]:hover,
+input[type="submit"]:hover,
+button:hover,
+.btn:hover{
+	background-color: black;
+	color: white;
+	transition-duration: 0.5s;
+}	
+.login input {
+	height: 30px;
+	width: 200px;
+	padding-left: 5px;
+}
+.login .left {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	width: 100px;
+	height: 200px;
+} 
+.login .right {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	width: 300px;
+	height: 200px;
+}
+.login .left p {
+	margin: 0;
+}
+.flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.column {
+	flex-flow: column;
+}
+.vbox reply{
+	border: 1px solid black;
+	display: flex;
+}
+
+
+
+
