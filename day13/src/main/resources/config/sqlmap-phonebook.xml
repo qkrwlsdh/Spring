@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.itbank.phonebook.PhoneBookDAO">
+	
+	<select id="selectList" resultType="pb">
+		select * from phonebook order by name
+	</select>
+	
+	<insert id="insertPhoneBook" parameterType="pb">
+		insert into phonebook
+			(name, pnum)
+		values
+			(#{name}, #{pnum})
+	</insert>
+	
+	<delete id="deletePhoneBook" parameterType="int">
+		delete phonebook where idx=#{idx}
+	</delete>
+	
+	<update id="updatePhoneBook" parameterType="pb">
+		update phonebook set name=#{name}, pnum=#{pnum} where idx=#{idx}
+	</update>
+	
+	<select id="selectSearchList" parameterType="string" resultType="pb">
+		select * from phonebook
+			where name like '%'||#{search}||'%'
+				or pnum like '%'||#{search}||'%'
+	</select>
+</mapper>
+
+
+
+
+
